@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UsForever.com</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="logo.png">
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url("love.gif") no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      color: #fff;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .countdown {
+      font-size: 2rem;
+      margin: 20px 0;
+      animation: zoomIn 2s ease-in-out;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1) rotate(3deg);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+    .clicked {
+      animation: clickZoom 0.4s ease;
+    }
+
+    @keyframes clickZoom {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(0.85) rotate(-2deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>💖 Happy 1st Anniversary Maya 💖</h1>
+    <h2>Celebrating Love & Togetherness</h2>
+
+    <!-- Countdown -->
+    <div class="countdown" id="countdown"></div>
+
+    <!-- Photo Gallery -->
+    <div class="gallery">
+      <a href="memory1.html"><img src="1.png" alt="photo1"></a>
+      <a href="memory2.html"><img src="2.png" alt="photo2"></a>
+      <a href="memory3.html"><img src="3.png" alt="photo3"></a>
+      <a href="memory4.html"><img src="4.png" alt="photo4"></a>
+      <a href="memory5.html"><img src="5.png" alt="photo5"></a>
+      <a href="memory6.html"><img src="6.png" alt="photo6"></a>
+      <a href="memory7.html"><img src="7.png" alt="photo6"></a>
+    </div>
+
+    <footer>
+      <p>Celebrating Us – Anjana & Sangam💖</p>
+    </footer>
+  </div>
+
+  <script>
+    // Countdown Timer
+    const targetDate = new Date("Sep 19, 2025 00:00:00").getTime();
+    const timer = setInterval(function() {
+      let now = new Date().getTime();
+      let distance = targetDate - now;
+
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      if (distance < 0) {
+        clearInterval(timer);
+        document.getElementById("countdown").innerHTML = "🎉 Anniversary Day 🎉";
+      }
+    }, 1000);
+
+    // Add click animation on images
+    document.querySelectorAll(".gallery img").forEach(img => {
+      img.addEventListener("click", (e) => {
+        e.target.classList.add("clicked");
+        setTimeout(() => {
+          e.target.classList.remove("clicked");
+        }, 400);
+      });
+    });
+  </script>
+</body>
+</html>

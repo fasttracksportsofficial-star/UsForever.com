@@ -1,0 +1,31 @@
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  opacity: 0; /* hidden before animation */
+  transform: translateY(30px);
+  animation: fadeUp 1s forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery img:hover {
+  animation: hoverZoom 0.6s ease forwards;
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+@keyframes hoverZoom {
+  0% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+  }
+  100% {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+  }
+}
